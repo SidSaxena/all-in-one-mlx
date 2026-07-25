@@ -56,6 +56,7 @@ def _run_mlx_inference(
   mlx_compile: bool,
   ensemble_parallel: bool,
   out_dir: Optional[Path],
+  logits_dir: Optional[Path],
   _emit_timing,
   _emit_summary,
 ) -> List[AnalysisResult]:
@@ -135,7 +136,7 @@ def _run_mlx_inference(
 
       if out_dir is not None:
         t0 = time.perf_counter()
-        save_results(result, out_dir)
+        save_results(result, out_dir, logits_dir)
         t1 = time.perf_counter()
         _emit_timing("save", path, t0, t1)
 
@@ -189,7 +190,7 @@ def _run_mlx_inference(
           _emit_summary(path, timings)
         if out_dir is not None:
           t0 = time.perf_counter()
-          save_results(result, out_dir)
+          save_results(result, out_dir, logits_dir)
           t1 = time.perf_counter()
           _emit_timing("save", path, t0, t1)
         results.append(result)
@@ -239,6 +240,7 @@ def _parse_overwrite(overwrite: Union[bool, str, None]) -> Set[str]:
 def analyze(
   paths: Union[PathLike, List[PathLike]],
   out_dir: PathLike = None,
+  logits_dir: PathLike = None,
   visualize: Union[bool, PathLike] = False,
   sonify: Union[bool, PathLike] = False,
   model: str = 'harmonix-all',
@@ -586,7 +588,7 @@ def analyze(
 
           if out_dir is not None:
             t0 = time.perf_counter()
-            save_results(result, out_dir)
+            save_results(result, out_dir, logits_dir)
             t1 = time.perf_counter()
             _emit_timing("save", path, t0, t1)
 
@@ -609,6 +611,7 @@ def analyze(
           mlx_compile=mlx_compile,
           ensemble_parallel=ensemble_parallel,
           out_dir=out_dir,
+          logits_dir=logits_dir,
           _emit_timing=_emit_timing,
           _emit_summary=_emit_summary if timings_summary else None,
         )

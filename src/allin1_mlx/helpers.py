@@ -421,24 +421,31 @@ def _round_floats(data, decimals=2):
 def save_results(
   results: Union[AnalysisResult, List[AnalysisResult]],
   out_dir: PathLike,
+  logits_dir: PathLike = None,
 ):
   if not isinstance(results, list):
     results = [results]
 
   out_dir = mkpath(out_dir)
   out_dir.mkdir(parents=True, exist_ok=True)
+  # Activations and embeddings are large and are usually wanted somewhere other
+  # than beside the JSON. They stay next to it unless a destination is given.
+  array_dir = mkpath(logits_dir) if logits_dir is not None else out_dir
+  if array_dir != out_dir:
+    array_dir.mkdir(parents=True, exist_ok=True)
   for result in results:
     out_path = out_dir / result.path.with_suffix('.json').name
+    array_path = array_dir / result.path.with_suffix('.json').name
     result = asdict(result)
     result['path'] = str(result['path'])
 
     activations = result.pop('activations')
     if activations is not None:
-      np.savez(str(out_path.with_suffix('.activ.npz')), **activations)
+      np.savez(str(array_path.with_suffix('.activ.npz')), **activations)
 
     embeddings = result.pop('embeddings')
     if embeddings is not None:
-      np.save(str(out_path.with_suffix('.embed.npy')), embeddings)
+      np.save(str(array_path.with_suffix('.embed.npy')), embeddings)
 
     # Round all float values to 2 decimal places
     result = _round_floats(result, decimals=2)

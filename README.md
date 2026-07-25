@@ -212,9 +212,18 @@ Optional outputs:
 |---|---|
 | Visualizations | `--visualize` and `--viz-dir` |
 | Sonifications | `--sonify` and `--sonif-dir` |
-| Frame-level activations | `--activ` |
-| Frame-level embeddings | `--embed` |
+| Frame-level activations | `--activ` and `--logits-dir` |
+| Frame-level embeddings | `--embed` and `--logits-dir` |
 | JSONL timings | `--timings-path` |
+
+Activations and embeddings are written beside the JSON in `--out-dir` unless
+`--logits-dir` points somewhere else. They are far larger than the JSON, so
+keeping them apart is often what you want:
+
+```bash
+allin1-mlx song.wav --activ --embed \
+    --out-dir ./struct --logits-dir ./logits
+```
 
 ## Model weights
 

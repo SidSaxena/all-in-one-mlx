@@ -18,6 +18,9 @@ def make_parser():
                       help='Save sonifications (default: False)')
   parser.add_argument('--sonif-dir', type=str, default=cwd / 'sonif',
                       help='Directory to save sonifications if -s is provided (default: ./sonif)')
+  parser.add_argument('--logits-dir', type=Path, default=None,
+                      help='Directory for activations and embeddings if -a/-e is provided '
+                           '(default: alongside the JSON in --out-dir)')
   parser.add_argument('-a', '--activ', action='store_true',
                       help='Save frame-level raw activations from sigmoid and softmax (default: False)')
   parser.add_argument('-e', '--embed', action='store_true',
@@ -128,6 +131,7 @@ def main():
   analyze(
     paths=args.paths,
     out_dir=args.out_dir,
+    logits_dir=args.logits_dir,
     visualize=args.viz_dir if args.visualize else False,
     sonify=args.sonif_dir if args.sonify else False,
     model=args.model,

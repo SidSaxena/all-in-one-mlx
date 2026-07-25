@@ -42,13 +42,13 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "demucs-mlx", specifier = ">=1.4.0" },
+    { name = "demucs-mlx", specifier = ">=1.4.3" },
     { name = "huggingface-hub" },
     { name = "hydra-core" },
     { name = "librosa", specifier = ">=0.11.0" },
     { name = "matplotlib" },
     { name = "mlx", specifier = ">=0.31.0" },
-    { name = "mlx-audio-io", specifier = ">=1.3.8" },
+    { name = "mlx-audio-io", specifier = ">=1.3.9" },
     { name = "natten-mlx", specifier = ">=0.3.1" },
     { name = "numba", specifier = ">=0.60.0" },
     { name = "numpy", specifier = ">=1.26.0" },
@@ -370,7 +370,7 @@ resolution-markers = [
     "python_full_version < '3.11' and sys_platform != 'darwin' and sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" } },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/66/54/eb9bfc647b19f2009dd5c7f5ec51c4e6ca831725f1aea7a993034f483147/contourpy-1.3.2.tar.gz", hash = "sha256:b6945942715a034c671b7fc54f9588126b0b8bf23db2696e3ca8328f3ff0ab54", size = 13466130, upload-time = "2025-04-15T17:47:53.79Z" }
 wheels = [
@@ -448,7 +448,7 @@ resolution-markers = [
     "python_full_version == '3.11.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.3.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "numpy", version = "2.3.5", source = { registry = "https://pypi.org/simple" } },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/58/01/1253e6698a07380cd31a736d248a3f2a50a7c88779a1813da27503cadc2a/contourpy-1.3.3.tar.gz", hash = "sha256:083e12155b210502d0bca491432bb04d56dc3432f95a979b429f2848c3dbe880", size = 13466174, upload-time = "2025-07-26T12:03:12.549Z" }
 wheels = [
@@ -545,7 +545,7 @@ wheels = [
 
 [[package]]
 name = "demucs-mlx"
-version = "1.4.0"
+version = "1.4.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "mlx" },
@@ -556,9 +556,9 @@ dependencies = [
     { name = "packaging" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ce/8c/dfd7aab6d4efbf1755a8e625eb78b283b5f1e5dc6bd839a5df02610f6975/demucs_mlx-1.4.0.tar.gz", hash = "sha256:6c613961fe179705eb4614258c3cc9eebb8b03606c84b5330eb86afa01f5e0a5", size = 57530, upload-time = "2026-03-02T16:04:44.204Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/31/74/f66399b78580b54b17a5b9e0ab13004df71449abf3770113d2af83f7ce1e/demucs_mlx-1.4.4.tar.gz", hash = "sha256:abf53b32b7fc9cecac1936793fbdd748633df237e4ff6153c275e4d8cc03b8f2", size = 61695, upload-time = "2026-06-14T01:43:22.397Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e2/e7/1c6b5f966be9d0440f843490a90880bc204db480d188d8e102073765a5e1/demucs_mlx-1.4.0-py3-none-any.whl", hash = "sha256:0b65ee5e63233ef41acc6c731342505eb503dd474b1e3bd19fa1413b4d15782f", size = 63472, upload-time = "2026-03-02T16:04:42.659Z" },
+    { url = "https://files.pythonhosted.org/packages/5c/8b/8e99e5105abee71555ca61f57d2ed583c3f28c94c36e416f1b88e5b9ba4d/demucs_mlx-1.4.4-py3-none-any.whl", hash = "sha256:dc40828b0a8591720082d2494696249790573d4ff6e5be72b16594e131b23e64", size = 64351, upload-time = "2026-06-14T01:43:21.23Z" },
 ]
 
 [[package]]
@@ -566,7 +566,7 @@ name = "exceptiongroup"
 version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/50/79/66800aadf48771f6b62f7eb014e352e5d06856655206165d775e675a02c9/exceptiongroup-1.3.1.tar.gz", hash = "sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219", size = 30371, upload-time = "2025-11-21T23:01:54.787Z" }
 wheels = [
@@ -1086,19 +1086,18 @@ wheels = [
 
 [package.optional-dependencies]
 cpu = [
-    { name = "mlx-cpu", marker = "sys_platform == 'linux'" },
+    { name = "mlx-cpu" },
 ]
 
 [[package]]
 name = "mlx-audio-io"
-version = "1.3.8"
+version = "1.3.10"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "mlx", marker = "sys_platform == 'darwin' or sys_platform == 'linux'" },
     { name = "mlx", extra = ["cpu"], marker = "sys_platform == 'linux'" },
-    { name = "pytest" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/73/06/c96b27c6521962eb812b7f37f6d18aecceb8faff4e2782f91c2c11516f1b/mlx_audio_io-1.3.8.tar.gz", hash = "sha256:95a3be9fe09e163d7db3c5354ce0938feb266419116f09a65f5b0836798207d0", size = 320428, upload-time = "2026-03-06T06:18:47.94Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/6a/4d/78b683444cdb76dad598f3e342a11e8f4829831e370048c66b1ee381fdc5/mlx_audio_io-1.3.10.tar.gz", hash = "sha256:38e5d0fb208119388399a0aeb890ad6ca2797e586f38e53598c16abecab533b7", size = 321862, upload-time = "2026-03-13T14:56:12.011Z" }
 
 [[package]]
 name = "mlx-cpu"
@@ -1121,16 +1120,16 @@ wheels = [
 
 [[package]]
 name = "mlx-spectro"
-version = "0.2.2"
+version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "mlx" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "numpy", version = "2.3.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d7/76/3f7bd9e6dcb2b597a9f300ae0d467d7452e7302b8c982e010cc55e9c8906/mlx_spectro-0.2.2.tar.gz", hash = "sha256:c58c93dde8d717a564c97ba0bfcf2c7558fdeaa5c5103adedca2bd707c2c3647", size = 76139, upload-time = "2026-02-25T21:40:57.444Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/80/0c/5b91fb79a318f5fe6e7c0ce665706331f20f9688dfefb66cf18bca9ec6f5/mlx_spectro-0.7.0.tar.gz", hash = "sha256:697ffc19507556818717a22847eabd906e14f3083f02f17270c22588ef008956", size = 123638, upload-time = "2026-03-13T15:26:13.693Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5d/9f/a8c98d12ed7699c772523270e599c3fff67100dbe77811bb968cbd752af2/mlx_spectro-0.2.2-py3-none-any.whl", hash = "sha256:0a7017e54ed0538cf7b0d53eec5e2661b0cbcf0ecde4c758529024ad3215ec99", size = 29424, upload-time = "2026-02-25T21:40:55.934Z" },
+    { url = "https://files.pythonhosted.org/packages/3f/72/4065e6ac9c8e8b77b5aee1456961d56116f7be72460ab7018e3256a7c544/mlx_spectro-0.7.0-py3-none-any.whl", hash = "sha256:ef7879bf45f0b62455db4083bef74a19c62731b02ffc5abff43e6cc2cc39d884", size = 54593, upload-time = "2026-03-13T15:26:12.154Z" },
 ]
 
 [[package]]
@@ -1735,10 +1734,10 @@ resolution-markers = [
     "python_full_version < '3.11' and sys_platform != 'darwin' and sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "joblib", marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "scipy", version = "1.15.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "threadpoolctl", marker = "python_full_version < '3.11'" },
+    { name = "joblib" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" } },
+    { name = "scipy", version = "1.15.3", source = { registry = "https://pypi.org/simple" } },
+    { name = "threadpoolctl" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/98/c2/a7855e41c9d285dfe86dc50b250978105dce513d6e459ea66a6aeb0e1e0c/scikit_learn-1.7.2.tar.gz", hash = "sha256:20e9e49ecd130598f1ca38a1d85090e1a600147b9c02fa6f15d69cb53d968fda", size = 7193136, upload-time = "2025-09-09T08:21:29.075Z" }
 wheels = [
@@ -1790,10 +1789,10 @@ resolution-markers = [
     "python_full_version == '3.11.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "joblib", marker = "python_full_version >= '3.11'" },
-    { name = "numpy", version = "2.3.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
-    { name = "scipy", version = "1.17.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
-    { name = "threadpoolctl", marker = "python_full_version >= '3.11'" },
+    { name = "joblib" },
+    { name = "numpy", version = "2.3.5", source = { registry = "https://pypi.org/simple" } },
+    { name = "scipy", version = "1.17.0", source = { registry = "https://pypi.org/simple" } },
+    { name = "threadpoolctl" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/0e/d4/40988bf3b8e34feec1d0e6a051446b1f66225f8529b9309becaeef62b6c4/scikit_learn-1.8.0.tar.gz", hash = "sha256:9bccbb3b40e3de10351f8f5068e105d0f4083b1a65fa07b6634fbc401a6287fd", size = 7335585, upload-time = "2025-12-10T07:08:53.618Z" }
 wheels = [
@@ -1845,7 +1844,7 @@ resolution-markers = [
     "python_full_version < '3.11' and sys_platform != 'darwin' and sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" } },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/0f/37/6964b830433e654ec7485e45a00fc9a27cf868d622838f6b6d9c5ec0d532/scipy-1.15.3.tar.gz", hash = "sha256:eae3cf522bc7df64b42cad3925c876e1b0b6c35c1337c93e12c0f366f55b0eaf", size = 59419214, upload-time = "2025-05-08T16:13:05.955Z" }
 wheels = [
@@ -1912,7 +1911,7 @@ resolution-markers = [
     "python_full_version == '3.11.*' and sys_platform != 'darwin' and sys_platform != 'linux'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.3.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "numpy", version = "2.3.5", source = { registry = "https://pypi.org/simple" } },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/56/3e/9cca699f3486ce6bc12ff46dc2031f1ec8eb9ccc9a320fdaf925f1417426/scipy-1.17.0.tar.gz", hash = "sha256:2591060c8e648d8b96439e111ac41fd8342fdeff1876be2e19dea3fe8930454e", size = 30396830, upload-time = "2026-01-10T21:34:23.009Z" }
 wheels = [
@@ -2053,8 +2052,8 @@ name = "standard-aifc"
 version = "3.13.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "audioop-lts", marker = "python_full_version >= '3.13'" },
-    { name = "standard-chunk", marker = "python_full_version >= '3.13'" },
+    { name = "audioop-lts" },
+    { name = "standard-chunk" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/c4/53/6050dc3dde1671eb3db592c13b55a8005e5040131f7509cef0215212cb84/standard_aifc-3.13.0.tar.gz", hash = "sha256:64e249c7cb4b3daf2fdba4e95721f811bde8bdfc43ad9f936589b7bb2fae2e43", size = 15240, upload-time = "2024-10-30T16:01:31.772Z" }
 wheels = [
@@ -2075,7 +2074,7 @@ name = "standard-sunau"
 version = "3.13.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "audioop-lts", marker = "python_full_version >= '3.13'" },
+    { name = "audioop-lts" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/66/e3/ce8d38cb2d70e05ffeddc28bb09bad77cfef979eb0a299c9117f7ed4e6a9/standard_sunau-3.13.0.tar.gz", hash = "sha256:b319a1ac95a09a2378a8442f403c66f4fd4b36616d6df6ae82b8e536ee790908", size = 9368, upload-time = "2024-10-30T16:01:41.626Z" }
 wheels = [
