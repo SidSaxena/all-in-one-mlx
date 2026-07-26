@@ -21,6 +21,11 @@ def make_parser():
   parser.add_argument('--logits-dir', type=Path, default=None,
                       help='Directory for activations and embeddings if -a/-e is provided '
                            '(default: alongside the JSON in --out-dir)')
+  parser.add_argument('--demix-seed', type=int, default=None,
+                      help='Seed the random time shift demucs applies before separation. '
+                           'Unseeded (the default) the stems differ on every run. Seeding '
+                           'removes that source of variation but not all of it: the MLX '
+                           'forward pass is itself not bitwise stable.')
   parser.add_argument('-a', '--activ', action='store_true',
                       help='Save frame-level raw activations from sigmoid and softmax (default: False)')
   parser.add_argument('-e', '--embed', action='store_true',
@@ -132,6 +137,7 @@ def main():
     paths=args.paths,
     out_dir=args.out_dir,
     logits_dir=args.logits_dir,
+    demix_seed=args.demix_seed,
     visualize=args.viz_dir if args.visualize else False,
     sonify=args.sonif_dir if args.sonify else False,
     model=args.model,

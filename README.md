@@ -225,6 +225,30 @@ allin1-mlx song.wav --activ --embed \
     --out-dir ./struct --logits-dir ./logits
 ```
 
+## Reproducibility
+
+Two runs of the same track do not give the same result, and there are two
+reasons.
+
+Demucs applies a random time shift of up to half a second before separating and
+reverses it afterwards. This is test-time augmentation and is on by default
+(`shifts=1`); the RNG is unseeded, so the stems differ on every run. Pass
+`--demix-seed` to fix it:
+
+```bash
+allin1-mlx song.wav --demix-seed 1234
+```
+
+That removes one source but not the other: the MLX forward pass is itself not
+bitwise stable. On one measurement, a single pass over an identical input array
+with no chunking, no splitting, and no shift differed by a mean of 1.1e-3
+against a signal RMS of 0.045. Seeding roughly halves the peak difference
+between runs and does not remove it.
+
+Because the model's whole input is the separated stems, this reaches the
+output: segment counts and boundary positions can change between runs of the
+same command.
+
 ## Model weights
 
 | Item | Behavior |

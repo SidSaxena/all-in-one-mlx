@@ -241,6 +241,7 @@ def analyze(
   paths: Union[PathLike, List[PathLike]],
   out_dir: PathLike = None,
   logits_dir: PathLike = None,
+  demix_seed: int = None,
   visualize: Union[bool, PathLike] = False,
   sonify: Union[bool, PathLike] = False,
   model: str = 'harmonix-all',
@@ -463,7 +464,9 @@ def analyze(
 
     if process_paths and not use_mlx_in_memory:
       t0 = time.perf_counter()
-      demix_paths = demix(process_paths, demix_dir_actual, overwrite=overwrite_demix)
+      demix_paths = demix(
+        process_paths, demix_dir_actual, overwrite=overwrite_demix, seed=demix_seed
+      )
       t1 = time.perf_counter()
       _emit_timing(demix_stage, None, t0, t1, {"count": len(process_paths)})
 
@@ -493,7 +496,7 @@ def analyze(
           ) from exc
         t_init0 = time.perf_counter()
         from demucs_mlx.api import Separator
-        separator = Separator(model="htdemucs", progress=False)
+        separator = Separator(model="htdemucs", progress=False, seed=demix_seed)
         t_init1 = time.perf_counter()
         _emit_timing("demix_init: demucs-mlx", None, t_init0, t_init1)
         if keep_byproducts:

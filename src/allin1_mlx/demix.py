@@ -7,6 +7,7 @@ def demix(
   paths: List[Path],
   demix_dir: Path,
   overwrite: bool = False,
+  seed: int = None,
 ):
   """Demixes audio files into source-separated stems using demucs-mlx."""
 
@@ -43,7 +44,7 @@ def demix(
         "demucs-mlx is not available. Install it with `uv pip install demucs-mlx`."
       ) from exc
 
-    separator = Separator(model="htdemucs", progress=False)
+    separator = Separator(model="htdemucs", progress=False, seed=seed)
     for path in todos:
       _, stems = separator.separate_audio_file(path)
       output_subdir = demix_dir / 'htdemucs' / path.stem
